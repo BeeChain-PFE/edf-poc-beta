@@ -21,5 +21,11 @@ module.exports = {
       provider: () => new PrivateKeyProvider(privateKey, "http://localhost:8545"),
       network_id: "*"
     }
-  }
+    
+  },
+  compilers: {
+    solc: {
+      version: "^0.8.0"
+    }
+ }
 };
