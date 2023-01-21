@@ -1,0 +1,23 @@
+import { HOLDER_REQUESTS, HOLDER_VC } from "./types";
+
+const initState = {
+  requests: [],
+  vcs: [],
+};
+
+export function holderReducer(state = initState, action) {
+  switch (action.type) {
+    case HOLDER_REQUESTS:
+      return {
+        ...state,
+        requests: [...action.payload],
+      };
+    case HOLDER_VC:
+      return {
+        ...state,
+        vcs: [...action.payload],
+      };
+    default:
+      return { ...state };
+  }
+}

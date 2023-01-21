@@ -1,0 +1,47 @@
+.app-header {
+    .left{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .right{
+
+        display: flex;
+        flex-direction: row;
+        margin-right: 14%;
+        .right-account-dropdown{
+            margin-right: 5%;
+        }
+    }
+    width: 100%;
+    // background: #181D40;
+    background: #af530d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    ul{
+        display: flex;
+        background-color: red($color: #000000);
+        height: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        border: black;
+       
+        li{
+            display: flex;
+            margin: 4%;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+            border: black;
+            a{
+                color: rgb(232 196 134) !important;
+                &:hover {
+                    color:white !important;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+	"WALTID_HOLDER_API": "http://localhost:7003",
+	"WALTID_VERIFIER_API": "http://localhost:7002",
+	"WALTID_ISSUER_API": "http://localhost:7001",
+	"WALTID_CORE_API": "http://localhost:7000",
+	"BACKEND_API": "http://localhost:8000"
+}

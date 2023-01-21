@@ -1,33 +1,30 @@
-import React from 'react'
-import "./navbar.css"
-import {
-  Link
-} from "react-router-dom";
-const NavBar = ({account}) => {
+import React from "react";
+import "./navbar.css";
+import { Link } from "react-router-dom";
+const NavBar = ({ account }) => {
   return (
     <nav className="navigation">
-        
-      <div
-        className="navigation-menu">
+      <div className="navigation-menu">
         <ul>
-          
           <li>
-          <Link to="/">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/test">Test</Link>
           </li>
           <li>
-          <Link to="/users">Users</Link>
+            <Link to="/did-management">Did management</Link>
           </li>
           <li>
-          <Link to="/">Valider transaction</Link>
+            <Link to="/transactions">Transactions</Link>
           </li>
         </ul>
       </div>
-      <div className="account"><p >Account : {account}</p></div>
+      <div className="account">
+        <p>Account : {account}</p>
+      </div>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
