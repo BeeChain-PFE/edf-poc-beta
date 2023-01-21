@@ -4,16 +4,15 @@ import Transaction from "../../components/transaction/transaction";
 const EnvoyerTransactionFournisseur = () => {
   const transactionData = [
     {
-      label: "didTo",
+      label: "Client",
       placeHolder: "did:ebsi:XXX",
-    },
-    {
-      label: "dateTime",
-      placeHolder: "YYYY-MM-DDThh:mm:ss",
+      type: "select",
+      options: ["Client1", "Client2"],
     },
     {
       label: "returnReceipt",
-      placeHolder: "yes",
+      type: "select",
+      options: ["yes", "no"],
     },
   ];
   return (

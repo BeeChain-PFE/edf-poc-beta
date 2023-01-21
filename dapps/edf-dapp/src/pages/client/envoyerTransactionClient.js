@@ -1,27 +1,14 @@
 import React from "react";
+import Specifications from "../../components/specifications/specifications";
 import Transaction from "../../components/transaction/transaction";
 
 const EnvoyerTransactionClient = () => {
   const transactionData = [
     {
-      label: "didTo",
+      label: "Fournisseur",
       placeHolder: "did:ebsi:XXX",
-    },
-    {
-      label: "dateTime",
-      placeHolder: "YYYY-MM-DDThh:mm:ss",
-    },
-    {
-      label: "item",
-      placeHolder: "yes",
-    },
-    {
-      label: "quantity",
-      placeHolder: "55",
-    },
-    {
-      label: "tests",
-      placeHolder: "resists XX pressure",
+      type: "select",
+      options: ["fournisseur1", "fournisseur2"],
     },
   ];
   return (

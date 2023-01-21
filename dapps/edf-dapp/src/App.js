@@ -16,6 +16,7 @@ import TransactionFournisseur from "./pages/fournisseur/envoyerTransactionFourni
 import EnvoyerTransactionClient from "./pages/client/envoyerTransactionClient";
 import EnvoyerTransactionFournisseur from "./pages/fournisseur/envoyerTransactionFournisseur";
 import { PersistGate } from "redux-persist/integration/react";
+import ListerTransactionFournisseur from "./pages/fournisseur/ListerTransactionFournisseur";
 export default function App() {
   return (
     <Provider store={store}>
@@ -60,7 +61,7 @@ export default function App() {
               element={
                 <div className="page-bg-blue">
                   <div className="container">
-                    <EnvoyerTransactionFournisseur />
+                    <ListerTransactionFournisseur />
                   </div>
                 </div>
               }

@@ -15,7 +15,7 @@ const InputField = ({
   const [valueState, setValueState] = useState(value);
   const onInputChange = (event) => {
     setValueState(event.target.value);
-    if (this.props.onChange) {
+    if (onChange) {
       onChange(event.target.value);
     }
   };
@@ -25,6 +25,7 @@ const InputField = ({
       <div className="input-field-input w-50 p-2">
         <input
           value={valueState}
+          type="select"
           placeholder={placeholder}
           disabled={!inputChange}
           onChange={onInputChange}

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Web3 from "web3";
+import jwt_decode from "jwt-decode";
 // import SimpleStorageContract from '../../abi/SimpleStorage.json';
 import Tracabilite from "../../abi/Tracabilite.json";
 
@@ -270,7 +271,15 @@ const Test = () => {
             <li key={blockNumber}> blockNumber : {blockNumber}</li>
             <li key={from}> from : {from}</li>
             <li key={to}> to : {to}</li>
-            <li key={input}> data : {web3.utils.hexToString(input)}</li>
+            <li key={web3.utils.hexToString(input)}>
+              <pre>
+                {JSON.stringify(
+                  jwt_decode(web3.utils.hexToString(input)),
+                  null,
+                  2
+                )}
+              </pre>
+            </li>
           </ul>
         ))}
       <hr />
@@ -293,6 +302,7 @@ const Test = () => {
             <li> data en hex : {input}</li>
           </ul>
         ))}
+      <hr />
 
       {/* <pre>{JSON.stringify(transactions, null, 2)}</pre> */}
     </>
