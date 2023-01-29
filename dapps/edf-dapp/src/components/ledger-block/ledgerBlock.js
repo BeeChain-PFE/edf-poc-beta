@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./ledger-block.scss";
 import ledger from "../../assets/images/ledger.png";
-import Web3 from "web3";
+// import Web3 from "web3";
 import { store } from "../../common/store";
 import { ADD_KEY } from "../../common/reducers/types";
 
 const LedgerBlock = () => {
-  const web3 = new Web3(Web3.givenProvider);
-  const storeState = store.getState();
+  // const web3 = new Web3(Web3.givenProvider);
+  // const storeState = store.getState();
   // const [account, setaccount] = useState(null);
   const [errorMessage, setErrorMessage] = useState(); // state variable to set account.
   const connectWalletHandler = () => {
@@ -15,11 +15,17 @@ const LedgerBlock = () => {
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
+          console.log(result);
           store.dispatch({
             type: ADD_KEY,
-            payload: { publicKey: result[0], isSignedIn: true },
+            payload: {
+              publicKey: result[0],
+              isSignedIn: true,
+              typeAccount: "fournisseur",
+            },
           });
-
+          console.log("ledger block");
+          console.log(store.getState());
           // setConnectBtn("Wallet connecté");
           //   web3.eth
           //     .getTransactionCount(result[0])

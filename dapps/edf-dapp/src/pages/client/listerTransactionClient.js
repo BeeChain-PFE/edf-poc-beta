@@ -4,8 +4,9 @@ import ListerTransactions from "../../components/listerTransaction/listerTransac
 import { processListContract } from "../../common/contracts/ProcessListContract";
 import Select from "../../components/select/select";
 import ValidationCard from "../../components/validation-card/validationCard";
+import { Button } from "react-bootstrap";
 
-const ListerTransactionsFournisseur = () => {
+const ListerTransactionsClient = () => {
   useEffect(() => {
     getEtat();
     getListProcess();
@@ -17,7 +18,6 @@ const ListerTransactionsFournisseur = () => {
         console.log(err);
       } else {
         // console.log(result+1);
-        console.log(result);
         setStep(result);
       }
     });
@@ -45,28 +45,14 @@ const ListerTransactionsFournisseur = () => {
         console.log(err);
       } else {
         setTransactions(result[1]);
-        setStep(parseInt(result[2]));
+        setStep(result[2]);
         // setStep(result);
       }
     });
   };
 
-  const changeState = (newState) => {
-    // console.log(parseInt(step) + newState);
-    processListContract.methods
-      .updateProcessState(idCurrentProccess, parseInt(step) + newState)
-      .send({
-        from: "0xf17f52151EbEF6C7334FAD080c5704D77216b732",
-      })
-      .then((result) => {
-        getEtat();
-        // console.log(result);
-        // setStep((step) => parseInt(step) + newState);
-      });
-  };
-
   const [transactions, setTransactions] = useState([]);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [listProcess, setListProcess] = useState([]);
   const [idCurrentProccess, setIdCurrentProcess] = useState(1);
   const steps = [
@@ -84,6 +70,19 @@ const ListerTransactionsFournisseur = () => {
     setIdCurrentProcess(idProcess);
     getProcessById(idProcess);
   };
+  const changeState = (newState) => {
+    // console.log(parseInt(step) + newState);
+    processListContract.methods
+      .updateProcessState(idCurrentProccess, parseInt(step) + newState)
+      .send({
+        from: "0xf17f52151EbEF6C7334FAD080c5704D77216b732",
+      })
+      .then((result) => {
+        getEtat();
+        // console.log(result);
+        // setStep((step) => parseInt(step) + newState);
+      });
+  };
   return (
     <>
       <h5 className="my-4">Process de traçabilité nucléaire</h5>
@@ -98,9 +97,10 @@ const ListerTransactionsFournisseur = () => {
 
       <Stepper steps={steps} page="issuer" active={step}></Stepper>
       <ListerTransactions transactions={transactions} />
-      {step === 1 && <ValidationCard changeState={changeState} />}
+
+      {step === "1" && <ValidationCard changeState={changeState} />}
     </>
   );
 };
 
-export default ListerTransactionsFournisseur;
+export default ListerTransactionsClient;

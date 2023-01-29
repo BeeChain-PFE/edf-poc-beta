@@ -11,12 +11,15 @@ const Header = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [typeAccount, setTypeAccount] = useState(null);
   useEffect(() => {
+    console.log("header");
+    // setIsSignedIn(!!storeState.signin?.publicKey);
+    // setTypeAccount(storeState.signin?.typeAccount);
+    // console.log(storeState.signin);
     store.subscribe(() => {
       const storeState = store.getState();
-      setIsSignedIn(!!storeState.signin?.publicKey);
-      setTypeAccount(storeState.signin?.typeAccount);
+      setIsSignedIn(!!storeState?.publicKey);
+      setTypeAccount(storeState?.typeAccount);
     });
-    // this.unsubscribe && this.unsubscribe();
   }, []);
   return (
     <header className="app-header ">

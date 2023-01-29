@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import { rootReducer } from "./reducers/rootReducer";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
+import { signinReducer } from "./reducers/SigninReducer";
 
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -19,7 +20,7 @@ const persistConfig = {
   key: "root",
   storage,
 };
-const pReducer = persistReducer(persistConfig, rootReducer);
+const pReducer = persistReducer(persistConfig, signinReducer);
 export const store = createStore(pReducer, enhancer);
 const Persistor = persistStore(store);
 

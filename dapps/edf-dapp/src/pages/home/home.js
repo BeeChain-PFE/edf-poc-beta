@@ -10,11 +10,13 @@ import "./home.scss";
 
 const Home = ({ history }) => {
   useEffect(() => {
+    // const state = store.getState();
+    // console.log(state.publicKey);
+    // console.log(state);
     const unsubscribe = store.subscribe(() => {
       const state = store.getState();
-      if (state.signin.publicKey) {
-        unsubscribe();
-      }
+      console.log(state);
+      if (state.publicKey) unsubscribe();
     });
   }, []);
 

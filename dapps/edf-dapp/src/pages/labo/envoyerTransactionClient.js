@@ -2,7 +2,7 @@ import React from "react";
 import Specifications from "../../components/specifications-client/specificationsClient";
 import Transaction from "../../components/transaction-client/transactionClient";
 import Tracabilite from "../../abi/ProcessList.json";
-const EnvoyerTransactionClient = () => {
+const EnvoyerTransactionLabo = () => {
   const transactionData = [
     {
       label: "Fournisseur",
@@ -28,4 +28,4 @@ const EnvoyerTransactionClient = () => {
   );
 };
 
-export default EnvoyerTransactionClient;
+export default EnvoyerTransactionLabo;

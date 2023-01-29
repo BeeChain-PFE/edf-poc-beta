@@ -3,5 +3,5 @@
 	"WALTID_VERIFIER_API": "http://localhost:7002",
 	"WALTID_ISSUER_API": "http://localhost:7001",
 	"WALTID_CORE_API": "http://localhost:7000",
-	"BACKEND_API": "http://localhost:8000"
+	"BACKEND_API": "http://localhost:8081"
 }

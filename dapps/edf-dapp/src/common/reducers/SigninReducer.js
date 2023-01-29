@@ -1,11 +1,12 @@
-import { ADD_KEY, ADD_DID } from "./types";
+import { ADD_KEY } from "./types";
 
 const initState = {
   publicKey: null,
-  accountHash: null,
+  // accountHash: null,
   isSignedIn: false,
-  did: null,
+  // did: null,
   typeAccount: "client",
+  // token: null,
 };
 
 export const signinReducer = (state = initState, action) => {
@@ -15,12 +16,7 @@ export const signinReducer = (state = initState, action) => {
         ...state,
         ...action.payload,
       };
-    case ADD_DID:
-      return {
-        ...state,
-        ...action.payload,
-      };
     default:
-      return { ...state };
+      return { state };
   }
 };

@@ -1,32 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { store } from "../../common/store";
 import { ReactComponent as Union } from "../../assets/images/union.svg";
 import { ReactComponent as Vector } from "../../assets/images/vector.svg";
 import "./account-dropdown.scss";
 
 const AccountDropDown = () => {
-  // useEffect(() => {
-  //   store.subscribe(() => {
-  //     const storeState = store.getState();
-  //     setIsSignedIn(!!storeState.signin?.publicKey);
-  //   });
-  //   // this.unsubscribe && this.unsubscribe();
-  // }, []);
-  const [publicKey, setPublickey] = useState(null);
-  const getShorterKey = () => {
+  useEffect(() => {
     store.subscribe(() => {
       const state = store.getState();
-      setPublickey(state.signin.publicKey);
+      console.log(state.publicKey);
+      setPublickey(state.publicKey);
     });
-    if (publicKey)
-      return `${publicKey?.substr(0, 5)}...${publicKey?.substr(
-        publicKey?.length - 6
-      )}`;
-  };
+    // this.unsubscribe && this.unsubscribe();
+  }, []);
+  const [publicKey, setPublickey] = useState(null);
+
   return (
     <div className="account-dropdown d-flex text-white">
       <div className="union">{<Union></Union>}</div>
-      <div className="px-2">{getShorterKey()}</div>
+      <div className="px-2">{`${publicKey?.substr(0, 5)}...${publicKey?.substr(
+        publicKey?.length - 6
+      )}`}</div>
       <div className="text-white">{<Vector></Vector>}</div>
     </div>
   );

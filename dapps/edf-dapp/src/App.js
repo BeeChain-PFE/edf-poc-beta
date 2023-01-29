@@ -2,7 +2,6 @@ import React from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Test from "./components/test/Test";
-import Navbar from "./components/navbar/NavBar";
 import DidManagement from "./pages/did-management/didManagement";
 import Issuer from "./pages/issuer/issuer";
 import CreateDidDocument from "./pages/create-did-document/createDidDocument";
@@ -17,6 +16,7 @@ import EnvoyerTransactionClient from "./pages/client/envoyerTransactionClient";
 import EnvoyerTransactionFournisseur from "./pages/fournisseur/envoyerTransactionFournisseur";
 import { PersistGate } from "redux-persist/integration/react";
 import ListerTransactionFournisseur from "./pages/fournisseur/ListerTransactionFournisseur";
+import ListerTransactionsClient from "./pages/client/listerTransactionClient";
 export default function App() {
   return (
     <Provider store={store}>
@@ -121,7 +121,7 @@ export default function App() {
               element={
                 <div className="page-bg-blue">
                   <div className="container">
-                    <EnvoyerTransactionClient />
+                    <ListerTransactionsClient />
                   </div>
                 </div>
               }
