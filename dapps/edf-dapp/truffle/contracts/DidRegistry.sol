@@ -86,7 +86,7 @@ contract DidRegistry {
                 keccak256(abi.encodePacked(owners[i].addressO)) ==
                 keccak256(abi.encodePacked(_address))
             ) {
-                return (owners[i].didO, "owners", owners[i].nameO);
+                return (owners[i].didO, "client", owners[i].nameO);
             }
         }
         for (uint256 i = 0; i < supplierCount; i++) {
@@ -94,7 +94,7 @@ contract DidRegistry {
                 keccak256(abi.encodePacked(suppliers[i].addressS)) ==
                 keccak256(abi.encodePacked(_address))
             ) {
-                return (suppliers[i].didS, "suppliers", suppliers[i].nameS);
+                return (suppliers[i].didS, "fournisseur", suppliers[i].nameS);
             }
         }
         for (uint256 i = 0; i < laboratorieCount; i++) {
@@ -102,11 +102,7 @@ contract DidRegistry {
                 keccak256(abi.encodePacked(laboratories[i].addressL)) ==
                 keccak256(abi.encodePacked(_address))
             ) {
-                return (
-                    laboratories[i].didL,
-                    "laboratories",
-                    laboratories[i].nameL
-                );
+                return (laboratories[i].didL, "labo", laboratories[i].nameL);
             }
         }
         return ("", "", "");

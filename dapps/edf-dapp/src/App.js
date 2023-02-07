@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Test from "./components/test/Test";
-import DidManagement from "./pages/did-management/didManagement";
-import Issuer from "./pages/issuer/issuer";
-import CreateDidDocument from "./pages/create-did-document/createDidDocument";
-import Holder from "./pages/holder/Holder";
+
 import Home from "./pages/home/home";
-import Verifier from "./pages/verifier/verifier";
 import Header from "./components/header/header";
 import { Persistor, store } from "./common/store";
 import { Provider } from "react-redux";
@@ -17,41 +13,53 @@ import EnvoyerTransactionFournisseur from "./pages/fournisseur/envoyerTransactio
 import { PersistGate } from "redux-persist/integration/react";
 import ListerTransactionFournisseur from "./pages/fournisseur/ListerTransactionFournisseur";
 import ListerTransactionsClient from "./pages/client/listerTransactionClient";
+import EnvoyerTransactionLabo from "./pages/labo/envoyerTransactionLabo";
+import ListerTransactionsLabo from "./pages/labo/listerTransactionLabo";
+
+import Pvd from "./components/pvd/pvd";
+import HolderListPv from "./components/holder-list-pvd/holderListPvd";
+import DidRegistry from "./pages/didRegistry/didRegistry";
+
 export default function App() {
+  const [isConnected, setisConnected] = useState(false);
+
+  // store.subscribe(() => {
+  //   const storeState = store.getState();
+  // });
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={Persistor}>
         <Router>
-          <Header />
+          {<Header setisConnected={setisConnected} isConnected={isConnected} />}
           <Routes>
             <Route path="/test" element={<Test />} />
             <Route path="/users" element={<h2>Users</h2>} />
-            <Route
-              path="/did-management"
-              element={
-                <div className="page-bg-blue">
-                  <div className="container">
-                    <DidManagement />
-                  </div>
-                </div>
-              }
-            ></Route>
-            <Route
-              path="/issuer"
-              element={
-                <div className="page-bg-blue">
-                  <div className="container">
-                    <Issuer />
-                  </div>
-                </div>
-              }
-            ></Route>
             <Route
               path="/transactions-fournisseur-envoyer"
               element={
                 <div className="page-bg-blue">
                   <div className="container">
                     <EnvoyerTransactionFournisseur />
+                  </div>
+                </div>
+              }
+            ></Route>
+            <Route
+              path="/transactions-fournisseur-lister/:idProccess"
+              element={
+                <div className="page-bg-blue">
+                  <div className="container">
+                    <ListerTransactionFournisseur />
+                  </div>
+                </div>
+              }
+            ></Route>
+            <Route
+              path="/did-registry"
+              element={
+                <div className="page-bg-blue">
+                  <div className="container">
+                    <DidRegistry />
                   </div>
                 </div>
               }
@@ -81,7 +89,7 @@ export default function App() {
               element={
                 <div className="page-bg-blue">
                   <div className="container">
-                    <TransactionFournisseur />
+                    <EnvoyerTransactionLabo />
                   </div>
                 </div>
               }
@@ -91,7 +99,7 @@ export default function App() {
               element={
                 <div className="page-bg-blue">
                   <div className="container">
-                    <TransactionFournisseur />
+                    <ListerTransactionsLabo />
                   </div>
                 </div>
               }
@@ -117,7 +125,17 @@ export default function App() {
               }
             ></Route>
             <Route
-              path="/transactions-client-lister"
+              path="/transactions-client-lister/"
+              element={
+                <div className="page-bg-blue">
+                  <div className="container">
+                    <ListerTransactionsClient />
+                  </div>
+                </div>
+              }
+            ></Route>
+            <Route
+              path="/transactions-client-lister/:idProccess"
               element={
                 <div className="page-bg-blue">
                   <div className="container">
@@ -131,57 +149,34 @@ export default function App() {
               element={
                 <div className="page-bg-blue">
                   <div className="container">
-                    <EnvoyerTransactionClient />
+                    <HolderListPv />
                   </div>
                 </div>
               }
             ></Route>
             <Route
-              path="/create-did-document"
+              path="/pvd/:id"
               element={
                 <div className="page-bg-blue">
                   <div className="container">
-                    <CreateDidDocument />
+                    <Pvd />
                   </div>
                 </div>
               }
             ></Route>
-            <Route
-              path="/holder"
-              element={
-                <div className="page-bg-pink">
-                  <div className="container">
-                    <Holder />
-                  </div>
-                </div>
-              }
-            ></Route>
-            <Route
-              path="/verifier"
-              element={
-                <div className="page-bg-blue">
-                  <div className="container">
-                    <Verifier />
-                  </div>
-                </div>
-              }
-            />
-            {/* <Route
-          path="/create-verifier"
-          element={
-            <div className="page-bg-blue">
-              <div className="container">
-                <CreateVerifierRequest />
-              </div>
-            </div>
-          }
-        /> */}
+
             <Route
               path="/"
               element={
+                // <div className="page-bg-blue">
+                //   <div className="container">
+                //     <Home />
+                //   </div>
+                // </div>
                 <div className="page-bg-blue">
                   <div className="container">
-                    <Home />
+                    <Home setisConnected={setisConnected} />
+                    {/* <ListerTransactionsClient /> */}
                   </div>
                 </div>
               }

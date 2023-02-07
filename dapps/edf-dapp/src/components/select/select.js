@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./select.scss";
-const Select = ({ options, label, className, onChange }) => {
-  const [selectedOption, setSelectedOption] = useState(options[0].value);
+const Select = ({ options, label, className, onChange, currendId }) => {
+  const [selectedOption, setSelectedOption] = useState(
+    currendId ? "Le process " + currendId : options ? "" : options[0].value
+  );
   const onSelectChange = (event) => {
-    console.log(event.target.value);
+    console.log(event.target.selectedIndex);
     setSelectedOption(event.target.value);
     if (onChange) {
-      onChange(event.target.value);
+      onChange(event.target.value, event.target.selectedIndex);
     }
   };
   return (
@@ -17,7 +19,7 @@ const Select = ({ options, label, className, onChange }) => {
           <select value={selectedOption} onChange={(e) => onSelectChange(e)}>
             {options.map((value, i) => {
               return (
-                <option key={value} value={value}>
+                <option key={i} value={value}>
                   {value}
                 </option>
               );

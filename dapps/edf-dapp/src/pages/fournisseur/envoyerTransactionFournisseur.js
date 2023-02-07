@@ -1,7 +1,7 @@
 import React from "react";
 import TransactionFournisseur from "../../components/transaction-fournisseur/transactionFournisseur";
 
-const EnvoyerTransactionFournisseur = () => {
+const EnvoyerTransactionFournisseur = ({ setStep, setLoading }) => {
   const transactionData = [
     {
       label: "Laboratoires",
@@ -14,10 +14,12 @@ const EnvoyerTransactionFournisseur = () => {
     <>
       <div>
         <TransactionFournisseur
+          setLoading={setLoading}
+          setStep={setStep}
           transactionData={transactionData}
-          title={"T2 - Fournisseur vers Client"}
+          title={"T4 - Fournisseur vers Labo"}
           subtitle={
-            "Accusé de réception du fournisseur pour valider ou non la prise en charge de la commande"
+            "Réalise les demandes de tests au laboratoire en spécifiant les matériaux utilisés également"
           }
         />
       </div>

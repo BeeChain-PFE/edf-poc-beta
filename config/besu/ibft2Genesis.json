@@ -16,21 +16,62 @@
   "extraData": "0xf87ea00000000000000000000000000000000000000000000000000000000000000000f854944592c8e45706cc08b8f44b11e43cba0cfc5892cb9406e23768a0f59cf365e18c2e0c89e151bcdedc7094c5327f96ee02d7bcbc1bf1236b8c15148971e1de94ab5e7f4061c605820d3744227eed91ff8e2c8908808400000000c0",
   "coinbase" : "0x0000000000000000000000000000000000000000",
   "alloc" : {
-    "fe3b557e8fb62b89f4916b721be55ceb828dbd73" : {
-      "privateKey" : "8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63",
-      "comment" : "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
-      "balance" : "0xad78ebc5ac6200000"
+    "fe3b557e8fb62b89f4916b721be55ceb828dbd73": {
+      "privateKey": "8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "0xad78ebc5ac6200000"
     },
-    "627306090abaB3A6e1400e9345bC60c78a8BEf57" : {
-      "privateKey" : "c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3",
-      "comment" : "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
-      "balance" : "90000000000000000000000"
+    "558523354FBffAb0baD9009F8a8a6eFc4F7455f6": {
+      "privateKey": "0ec0711551d094193fe9ffb8a30117ae8fbaba0a536dfea32ea58b37474ae34f",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
     },
-    "f17f52151EbEF6C7334FAD080c5704D77216b732" : {
-      "privateKey" : "ae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f",
-      "comment" : "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
-      "balance" : "90000000000000000000000"
+    "5e557FF38aaE613cD4dCA65B5234435d3346c42C": {
+      "privateKey": "8da9e3263beca729ba0a17f292d20efa1b3c5f9d1398499f89feda665bcf7f6d",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
     },
+    "4A3D0C1e09193202D636Fcb557443d9CFB4657Fa": {
+      "privateKey": "e16a72400d472671d4ed4cd1da957ec8dd8d624645328fc00d41f95b05605faf",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
+    },
+    "2Bed2DddB1aa1FD4f7e8a014509D8fF488Cf14B6": {
+      "privateKey": "722a0bc6dd01c7047f6cfad99553a6f0009f7b7c33e0a2382838239dbcad2049",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
+    },
+    "a00A747C03Fd4312c867f6390Bb547E874FA175D": {
+      "privateKey": "9cdb1ef7c2393c4bec669f8c3860915c3b2fd88f2dc0167f82f586b1f8c31467",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
+    },
+    "dA13E0D15c96Ee43F8C0BBA1152Ed0D3c7B5C625": {
+      "privateKey": "bf57af334f5962943a36aec3ec0fda64bc71a52e6660c29b89a13e8e452240b7",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
+    },
+    "d1Dc4435A078777ECcFb4aE4c1F88A795Ed3DFaD": {
+      "privateKey": "cb55f942305b53bd542d329e761d476baf9db39429ed3429e25be6495f361080",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
+    },
+    "627306090abaB3A6e1400e9345bC60c78a8BEf57": {
+      "privateKey": "c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
+    },
+    "f17f52151EbEF6C7334FAD080c5704D77216b732": {
+      "privateKey": "ae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
+    },
+    "C96647Cc09DDDeA9d2626F96b67cE206ac62bf7d": {
+      "privateKey": "069d77e6f589ec1aab84d01a0cc9575aa6c0f636836f0c9b69681ab0431a38f0",
+      "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+      "balance": "90000000000000000000000"
+    },
+    
     "0x0000000000000000000000000000000000008888": {
       "comment": "Account Ingress smart contract",
       "balance": "0",

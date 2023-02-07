@@ -70,6 +70,40 @@ contract ProcessList {
         process.hashes.push(_hash);
     }
 
+    function updateProcessState(uint256 _id, uint8 _state) public {
+        require(
+            _state <= uint8(ProcessState.PVDGenerated),
+            "Invalid state value"
+        );
+        processes[_id].state = _state;
+    }
+
+    function updateProcess(
+        uint256 _id,
+        uint8 _state,
+        string memory _hash,
+        string memory _laboratory
+    ) public {
+        require(
+            _state <= uint8(ProcessState.PVDGenerated),
+            "Invalid state value"
+        );
+        Process storage process = processes[_id];
+        process.state = _state;
+        process.hashes.push(_hash);
+        process.laboratory = _laboratory;
+    }
+
+    function updateLastProcess(
+        uint256 _id,
+        uint8 _state,
+        string memory _hash
+    ) public {
+        Process storage process = processes[_id];
+        process.state = _state;
+        process.hashes.push(_hash);
+    }
+
     function updateProcessLaboratory(uint256 _id, string memory _laboratory)
         public
     {
@@ -79,14 +113,6 @@ contract ProcessList {
 
     function getProcessState(uint256 _id) public view returns (uint8) {
         return (processes[_id].state);
-    }
-
-    function updateProcessState(uint256 _id, uint8 _state) public {
-        require(
-            _state <= uint8(ProcessState.PVDGenerated),
-            "Invalid state value"
-        );
-        processes[_id].state = _state;
     }
 
     function getProcessHashes(uint256 _id)
@@ -114,7 +140,7 @@ contract ProcessList {
         uint256[] memory processIds = new uint256[](processCount);
         uint256 count = 0;
         bytes32 ownerHash = keccak256(abi.encodePacked(_owner));
-        for (uint256 i = 0; i < processCount; i++) {
+        for (uint256 i = 0; i <= processCount; i++) {
             bytes32 processOwnerHash = keccak256(
                 abi.encodePacked(processes[i].owner)
             );
@@ -138,7 +164,7 @@ contract ProcessList {
         uint256[] memory processIds = new uint256[](processCount);
         uint256 count = 0;
         bytes32 laboratoryHash = keccak256(abi.encodePacked(_laboratory));
-        for (uint256 i = 0; i < processCount; i++) {
+        for (uint256 i = 0; i <= processCount; i++) {
             bytes32 processlaboratoryHash = keccak256(
                 abi.encodePacked(processes[i].laboratory)
             );
@@ -166,7 +192,7 @@ contract ProcessList {
         uint256[] memory processIds = new uint256[](processCount);
         uint256 count = 0;
         bytes32 supplierHash = keccak256(abi.encodePacked(_supplier));
-        for (uint256 i = 0; i < processCount; i++) {
+        for (uint256 i = 0; i <= processCount; i++) {
             bytes32 processsupplierHash = keccak256(
                 abi.encodePacked(processes[i].supplier)
             );

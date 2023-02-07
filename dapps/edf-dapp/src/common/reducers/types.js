@@ -1,12 +1,1 @@
-export const SIGNIN = "SIGNIN/SIGNIN";
-export const SIGNEDIN = "SIGNIN/SIGNEDIN";
-export const SIGNOUT = "SIGNIN/SIGNOUT";
-export const VERIFIER = "VERIFIER/VERIFIER";
-export const VERIFIER_VC = "VERIFIER/VC";
-export const VC_LIST = "VC/LIST";
-export const VP_REQUESTS = "VP/REQUESTS";
-export const CREATE_VP_REQUEST = "VP/CREATE_VP_REQUEST";
-export const HOLDER_REQUESTS = "HOLDER/SDR_REQUESTS";
-export const HOLDER_VC = "HOLDER/VC";
 export const ADD_KEY = "HOLDER/ADD_KEY";
-export const ADD_DID = "HOLDER/ADD_DID";

@@ -1,8 +1,51 @@
 .app-header {
+    width: 100%;
+    // background: #181D40;
+    height: 70px;
+    background: #af530d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     .left{
         display: flex;
-        flex-direction: row;
+         flex-direction: row;
         justify-content: flex-start;
+        align-items: center;
+        // background-color:red; 
+          
+        width: 100%;
+        ul{
+            
+            display: flex;
+            background-color: red($color: #000000);
+            height: 100%;
+            width: 100%;
+            margin-top: 10%; 
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            border: black;
+            li{
+                font-size: 20px;
+                margin-left: 1rem;
+                display: flex;
+                margin: 4%;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                border: black;
+                text-decoration: none;
+                a{
+                    color: rgb(9, 9, 9) !important;
+                    text-decoration: none;
+                    &:hover {
+                        color:white !important;
+                        text-decoration: none;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
     }
     .right{
 
@@ -13,35 +56,7 @@
             margin-right: 5%;
         }
     }
-    width: 100%;
-    // background: #181D40;
-    background: #af530d;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    ul{
-        display: flex;
-        background-color: red($color: #000000);
-        height: 100%;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        border: black;
-       
-        li{
-            display: flex;
-            margin: 4%;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100%;
-            border: black;
-            a{
-                color: rgb(232 196 134) !important;
-                &:hover {
-                    color:white !important;
-                    font-weight: 400;
-                }
-            }
-        }
-    }
+  
+   
+    
 }

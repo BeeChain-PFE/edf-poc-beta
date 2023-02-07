@@ -8,8 +8,11 @@ export function formatDate(date) {
   if (day.length < 2) day = "0" + day;
 
   return [
-    [[year, month, day].join("-"), " " + d.getHours()].join("T"),
-    d.getMinutes(),
-    d.getSeconds(),
+    [
+      [year, month, day].join("-"),
+      " " + d.getHours() > 10 ? d.getHours() : "0" + d.getHours(),
+    ].join("T"),
+    d.getMinutes() > 10 ? d.getMinutes() : "0" + d.getMinutes(),
+    d.getSeconds() > 10 ? d.getSeconds() : "0" + d.getMinutes(),
   ].join(":");
 }

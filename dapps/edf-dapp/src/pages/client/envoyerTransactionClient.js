@@ -1,21 +1,20 @@
-import React from "react";
-import Specifications from "../../components/specifications-client/specificationsClient";
-import Transaction from "../../components/transaction-client/transactionClient";
-import Tracabilite from "../../abi/ProcessList.json";
+import React, { useState, useEffect } from "react";
+
+import TransactionClient from "../../components/transaction-client/transactionClient";
+
 const EnvoyerTransactionClient = () => {
   const transactionData = [
     {
       label: "Fournisseur",
       placeHolder: "did:ebsi:XXX",
       type: "select",
-      options: ["fournisseur1", "fournisseur2"],
     },
   ];
 
   return (
     <>
       <div>
-        <Transaction
+        <TransactionClient
           transactionData={transactionData}
           title={"T1 - Client vers Fournisseur"}
           subtitle={

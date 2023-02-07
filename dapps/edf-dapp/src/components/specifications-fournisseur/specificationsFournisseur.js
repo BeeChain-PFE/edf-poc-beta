@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import Button from "../button/button";
-import InputField from "../input-field/InputField";
 import PageTitle from "../page-title/pageTitle";
 import Select from "../select/select";
 
-const SpecificationsCient = ({ index, setQuantity, setTest, setItem }) => {
+const SpecificationsFournisseur = ({
+  index,
+  setSize,
+  setPoids,
+  setMaterials,
+  setItem,
+}) => {
   const [testList, setTestList] = useState([]);
-
-  const [testValue, setTestValue] = useState(["Tests de flexion"]);
-
+  const [testValue, setTestValue] = useState([]);
   const addTest = () => {
     setTestValue((p) => {
       let myArray = [...p];
-      myArray[testList.length + 1] = "Tests de flexion";
-      setTest((q) => {
+      myArray[testList.length + 1] = "Acier inoxydable";
+      setMaterials((q) => {
         let arrayTest = [...q];
         arrayTest[index - 1] = myArray;
         return arrayTest;
@@ -25,27 +28,23 @@ const SpecificationsCient = ({ index, setQuantity, setTest, setItem }) => {
         <Select
           key={testList.length + 1}
           className="mb-2"
-          label={`test ${testList.length + 2}`}
+          label={`material ${testList.length + 2}`}
           options={[
-            "Tests de flexion",
-            "Tests de torsion",
-            "Tests de déformation",
-            "Tests de résistance à la rupture",
-            "Tests de fatigue",
-            "Tests de débit",
-            "Tests de cavitation",
-            "Tests de stabilité",
+            "Acier inoxydable",
+            "alliages de nickel",
+            "céramiques",
+            "graphite",
+            "plastiques",
           ]}
           onChange={(r) => {
             setTestValue((p) => {
               let myArray = [...p];
               myArray[testList.length + 1] = r;
-              setTest((q) => {
+              setMaterials((q) => {
                 let arrayTest = [...q];
                 arrayTest[index - 1] = myArray;
                 return arrayTest;
               });
-              console.log(myArray);
               return myArray;
             });
           }}
@@ -55,10 +54,10 @@ const SpecificationsCient = ({ index, setQuantity, setTest, setItem }) => {
   };
   return (
     <div>
-      <PageTitle subtitle={"Spécification piece " + index} />
+      <PageTitle subtitle={"Caractéristique piece " + index} />
       <Select
         className="mb-2"
-        label={"pièce"}
+        label={"piece"}
         options={[
           "Turbine à gaz",
           "Pompes à eau",
@@ -73,54 +72,60 @@ const SpecificationsCient = ({ index, setQuantity, setTest, setItem }) => {
           });
         }}
       />
-      <InputField
-        label={"quantité"}
+      <Select
         className="mb-2"
-        inputChange={true}
-        placeholder={"quantité2"}
-        onChange={(r) =>
-          setQuantity((q) => {
+        label={"size"}
+        options={["10 cm", "20 cm", "30 cm", "50 cm", "100 cm"]}
+        onChange={(r) => {
+          setSize((q) => {
             let myArray = [...q];
             myArray[index - 1] = r;
             return myArray;
-          })
-        }
+          });
+        }}
+      />
+      <Select
+        className="mb-2"
+        label={"poids"}
+        options={["10 g", "20 g", "30 g", "50 g", "100 g"]}
+        onChange={(r) => {
+          setPoids((q) => {
+            let myArray = [...q];
+            myArray[index - 1] = r;
+            return myArray;
+          });
+        }}
       />
 
       <Select
         className="mb-2"
-        label={`test 1`}
+        label={`material`}
         options={[
-          "Tests de flexion",
-          "Tests de torsion",
-          "Tests de déformation",
-          "Tests de résistance à la rupture",
-          "Tests de fatigue",
-          "Tests de débit",
-          "Tests de cavitation",
-          "Tests de stabilité",
+          "Acier inoxydable",
+          "alliages de nickel",
+          "céramiques",
+          "graphite",
+          "plastiques",
         ]}
         onChange={(r) => {
           setTestValue((p) => {
             let myArray = [...p];
             myArray[0] = r;
-            setTest((q) => {
+            setMaterials((q) => {
               let arrayTest = [...q];
-
               arrayTest[index - 1] = myArray;
               return arrayTest;
             });
-            console.log(myArray);
             return myArray;
           });
         }}
       />
       {testList}
       <Button color="primary" className="mt-2" onClick={addTest}>
-        Add Test
+        Add Material
       </Button>
     </div>
   );
 };
 
-export default SpecificationsCient;
+export default SpecificationsFournisseur;

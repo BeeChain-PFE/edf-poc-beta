@@ -1,0 +1,55 @@
+/* Fichier: home-page.css */
+
+.home-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    // background-color: #f2f2f2;
+  }
+  
+  .home-page-logo {
+    // margin-right: auto;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .home-page-logo img {
+    width: 150px;
+    height: auto;
+  }
+  
+  .home-page-text {
+    width: 100%;
+    margin-right: 20px;
+    // background-color: red;
+    p{
+        font-size: 19px;
+    }
+  }
+  
+  .home-page-text h1 {
+    color: #333333;
+  }
+  
+  .home-page-text p {
+    color: #555555;
+  }
+  
+  .home-page-image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .home-page-image img {
+    width: 400px;
+    height: auto;
+    margin-bottom: 3%;
+  }
+  
+  .home-page button {
+    background-color: #00b8d4;
+    color: #ffffff;
+  }
+  

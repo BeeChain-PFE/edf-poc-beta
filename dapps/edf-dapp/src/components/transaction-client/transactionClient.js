@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../button/button";
 import InputField from "../input-field/InputField";
 import PageTitle from "../page-title/pageTitle";
@@ -9,24 +9,62 @@ import Web3 from "web3";
 import { formatDate } from "../../common/helpers/formatDate";
 import { processListContract } from "../../common/contracts/ProcessListContract";
 import { store } from "../../common/store";
-const TransactionClient = ({ transactionData, title, subtitle, account }) => {
+import { didRegistryContract } from "../../common/contracts/didRegistryContract";
+import { useNavigate } from "react-router-dom";
+import Loader from "../loading/loader";
+const TransactionClient = ({ transactionData, title, subtitle }) => {
   const web3 = new Web3(Web3.givenProvider);
+  const state = store.getState();
+  const navigate = useNavigate();
+  const [didFrom, setdidFrom] = useState("");
+  const [suppliers, setsuppliers] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
 
+  const getAllSuppliers = async () => {
+    const suppliers = await didRegistryContract.methods
+      .getAllSuppliers()
+      .call();
+    setsuppliers(suppliers);
+    console.log(suppliers);
+  };
+  useEffect(() => {
+    getAllSuppliers();
+  }, []);
+  const getDidFrom = async () => {
+    await didRegistryContract.methods
+      .getDataByAddress(state.publicKey)
+      .call((err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          setdidFrom(result[0]);
+          // setStep(result);
+        }
+      });
+    // console.log(didFrom);
+  };
+
+  getDidFrom();
   const transaction1 = {
-    didFrom: "did:ebsi:gerger",
-    didTo: "did:ebsi:gerger",
+    didFrom: didFrom,
+    didTo: suppliers[index] && suppliers[index][1],
     dateTime: formatDate(new Date()),
     specifications: [{}],
   };
 
   const [specList, setSpecList] = useState([]);
   const [specQuantity, setSpecQuantity] = useState([0]);
-  const [specItem, setSpecItem] = useState(["item1"]);
-  const [specTest, setSpecTest] = useState([["test1"]]);
+  const [specItem, setSpecItem] = useState(["Turbine à gaz"]);
+  const [specTest, setSpecTest] = useState([["Tests de flexion"]]);
 
   const setSpecifiationsTransactions1 = () => {
     const specTable = [];
-    transaction1.specifications = { item: "item1", quantity: 0, test: "test1" };
+    transaction1.specifications = {
+      item: "Turbine à gaz",
+      quantity: 0,
+      test: "Tests de flexion",
+    };
     for (let index = 0; index < specList.length; index++) {
       specTable.push({
         item: specItem[index],
@@ -45,10 +83,13 @@ const TransactionClient = ({ transactionData, title, subtitle, account }) => {
     const secret = "secret";
     const jwt = sign(transaction1, secret);
     const state = store.getState();
+    console.log(state.publicKey);
+    console.log(suppliers[index] ? suppliers[index][0] : "");
+    setLoading(true);
     await web3.eth
       .sendTransaction({
         from: state.publicKey,
-        to: "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+        to: suppliers[index] ? suppliers[index][0] : "",
         value: "0",
         data: web3.utils.utf8ToHex(jwt),
       })
@@ -59,18 +100,21 @@ const TransactionClient = ({ transactionData, title, subtitle, account }) => {
           .addProcess(
             r.transactionHash,
             state.publicKey,
-            "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+            suppliers[index] ? suppliers[index][0] : ""
           )
           .send({
             from: state.publicKey,
           })
           .then((r) => {
+            setLoading(false);
             processListContract.methods
               .getProcessCount()
               .call((err, result) => {
                 if (err) {
                   console.log(err);
                 } else {
+                  console.log(result);
+                  navigate("/transactions-client-lister/" + result);
                 }
               });
           });
@@ -89,6 +133,8 @@ const TransactionClient = ({ transactionData, title, subtitle, account }) => {
       )
     );
   };
+  if (loading)
+    return <Loader title={"Transaction en cours vers fournisseur"} />;
   return (
     <div className="transaction">
       <PageTitle title={title} subtitle={subtitle} />
@@ -111,7 +157,8 @@ const TransactionClient = ({ transactionData, title, subtitle, account }) => {
                 key={id}
                 className="mb-2"
                 label={label}
-                options={options}
+                options={suppliers.map((supplier) => supplier[2])}
+                onChange={(v, i) => setIndex(i)}
               />
             );
           }
