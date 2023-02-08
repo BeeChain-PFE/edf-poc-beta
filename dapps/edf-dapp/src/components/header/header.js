@@ -18,6 +18,7 @@ const Header = ({ setisConnected, isConnected }) => {
     // setTypeAccount(storeState.signin?.typeAccount);
     // console.log(storeState.signin);
     store.subscribe(() => {
+      console.log("is signed in :" + isSignedIn);
       const storeState = store.getState();
       setIsSignedIn(!!storeState?.publicKey);
       setTypeAccount(storeState?.typeAccount);

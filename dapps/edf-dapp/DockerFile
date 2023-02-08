@@ -1,5 +1,5 @@
 # Fetching the latest node image on alpine linux
-FROM node:15.4 as development 
+FROM node:latest as development 
 
 # Declaring env
 ENV NODE_ENV development
@@ -16,4 +16,4 @@ COPY . .
 
 EXPOSE 3001
 # Starting our application
-CMD npm start
+CMD npm start 0.0.0.0 
